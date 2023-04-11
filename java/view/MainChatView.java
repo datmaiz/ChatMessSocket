@@ -1,21 +1,19 @@
-
 package view;
 
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-
 public class MainChatView extends javax.swing.JFrame {
-    
-    static final String sendIconURL = "C:\\Users\\lapto\\OneDrive\\Creative Cloud  " 
-            + " Files\\Documents\\NetBeansProjects\\ChatMessage\\src\\main\\java\\icon\\send.jpg";
+
+    static final String sendIconURL = "java/icon/send.jpg";
+
     public MainChatView() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         init();
     }
-    
+
     private void init() {
         intiImage();
     }
@@ -27,28 +25,29 @@ public class MainChatView extends javax.swing.JFrame {
         jScrollPane2.getViewport().setOpaque(false);
         initEvent();
     }
-    
+
     private void initEvent() {
-        sendButton.addActionListener( (e) -> {
-            String messageAvailabel = ourTextArea.getText();
-            if(!messageAvailabel.isBlank()) {
-                messageAvailabel += "\n";
+        sendButton.addActionListener((e) -> {
+            String messageAvailable = ourTextArea.getText();
+            if (!messageAvailable.isBlank()) {
+                ourTextArea.append("\n");
             }
-            messageAvailabel += myTextArea.getText();
-            ourTextArea.setText(messageAvailabel);
-            myTextArea.setText("");
             
+            // Handle if there are spaces, tabs, or enters, etc...
+            String sendingMessage = myTextArea.getText().replaceAll(" +", " ").trim();
+            ourTextArea.append(sendingMessage);
+            myTextArea.setText("");
         });
-       
     }
-    
+
     public static ImageIcon toIcon(String url, int width, int height) {
-        return new ImageIcon(new ImageIcon(url).
-                getImage().getScaledInstance(width, height,Image.SCALE_AREA_AVERAGING));
+        return new ImageIcon(
+                new ImageIcon(url).getImage().getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING));
     }
-    
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         backgroundPanel1 = new component.BackgroundPanel();
@@ -88,47 +87,49 @@ public class MainChatView extends javax.swing.JFrame {
         javax.swing.GroupLayout backgroundPanel1Layout = new javax.swing.GroupLayout(backgroundPanel1);
         backgroundPanel1.setLayout(backgroundPanel1Layout);
         backgroundPanel1Layout.setHorizontalGroup(
-            backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1))
-            .addGroup(backgroundPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-        );
+                backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(backgroundPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                                .addGap(0, 0, 0)
+                                .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))
+                        .addGroup(backgroundPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane2)
+                                .addContainerGap()));
         backgroundPanel1Layout.setVerticalGroup(
-            backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5))
-        );
+                backgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundPanel1Layout
+                                .createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(backgroundPanel1Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 45,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(5, 5, 5)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(backgroundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backgroundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(backgroundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-   
     public static void main(String args[]) {
-    
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Window".equals(info.getName())) {
@@ -137,15 +138,19 @@ public class MainChatView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainChatView.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
