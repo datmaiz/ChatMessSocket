@@ -3,6 +3,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 
 
@@ -10,10 +12,13 @@ public class MainChatView extends javax.swing.JFrame {
     
     static final String sendIconURL = "C:\\Users\\lapto\\OneDrive\\Creative Cloud  " 
             + " Files\\Documents\\NetBeansProjects\\ChatMessage\\src\\main\\java\\icon\\send.jpg";
+    
+    int x, y;
     public MainChatView() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         init();
+        initMove();
     }
     
     private void init() {
@@ -25,7 +30,28 @@ public class MainChatView extends javax.swing.JFrame {
         jScrollPane2.setOpaque(false);
         ourTextArea.setBackground(new Color(0, 0, 0, 0));
         jScrollPane2.getViewport().setOpaque(false);
+        myTextArea.setCaretColor(Color.WHITE);
         initEvent();
+    }
+    
+    private void initMove() {
+        
+        backgroundPanel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                x = e.getX();
+                y = e.getY();
+            }
+            
+        });
+        
+        backgroundPanel1.addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                MainChatView.this.setLocation(e.getXOnScreen() - x, e.getYOnScreen() - y);
+            }
+        });
+        
     }
     
     private void initEvent() {
