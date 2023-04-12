@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class UserMessage implements Serializable {
+    
     private final int id;
     private String message;
 
